@@ -1,6 +1,6 @@
 {
-  "robotWidth": 0.9,
-  "robotLength": 0.9,
+  "robotWidth": 0.83,
+  "robotLength": 0.83,
   "holonomicMode": true,
   "pathFolders": [
     "AutoDemos"
@@ -20,14 +20,14 @@
   "driveMotorType": "NEO",
   "driveCurrentLimit": 35.0,
   "wheelCOF": 0.8,
-  "flModuleX": 0.3,
-  "flModuleY": 0.3,
-  "frModuleX": 0.3,
-  "frModuleY": -0.3,
-  "blModuleX": -0.3,
-  "blModuleY": 0.3,
-  "brModuleX": -0.3,
-  "brModuleY": -0.3,
+  "flModuleX": 0.26,
+  "flModuleY": 0.26,
+  "frModuleX": 0.26,
+  "frModuleY": -0.26,
+  "blModuleX": -0.26,
+  "blModuleY": 0.26,
+  "brModuleX": -0.26,
+  "brModuleY": -0.26,
   "bumperOffsetX": 0.0,
   "bumperOffsetY": 0.0,
   "robotFeatures": [

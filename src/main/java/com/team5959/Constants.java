@@ -43,8 +43,8 @@ public class Constants {
     
         /* * * MEASUREMENTS * * */
         public static final double WHEEL_DIAMETER = 4 * 2.54 / 100; //Diametro en metros
-        public static final double TRACK_WIDTH = 0.6000;
-        public static final double WHEEL_BASE = 0.6000;
+        public static final double TRACK_WIDTH = 0.5200;
+        public static final double WHEEL_BASE = 0.5200;
       
         public static final double DRIVE_GEAR_RATIO = 6.75 / 1;
         public static final double ROTATION_GEAR_RATIO = 150 / 7;
@@ -141,7 +141,7 @@ public class Constants {
         public static final double DRIVE_KD = 0.0001;
 
         public static final double DRIVE_KS = 0.07;
-        public static final double DRIVE_KV = 3.4;
+        public static final double DRIVE_KV = 3.3;
         public static final double DRIVE_KA =0.2;
 
 
@@ -180,7 +180,7 @@ public class Constants {
     
     
         /* * * MAX * * */
-        public static final double MAX_SPEED = 3.4; //meters per second
+        public static final double MAX_SPEED = 3.2; //meters per second
         public static final double MAX_ROTATION = MAX_SPEED / Math.hypot(TRACK_WIDTH / 2.0, WHEEL_BASE / 2.0);
 
 

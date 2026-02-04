@@ -117,7 +117,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
 
-    m_robotContainer.getSwerveChassis().setNavxOffset(Rotation2d.fromDegrees(180)); // Ajusta el offset del navx si es
+    m_robotContainer.getSwerveChassis().setNavxOffset(Rotation2d.fromDegrees(0)); // Ajusta el offset del navx si es
                                                                                     // necesario
     m_robotContainer.getSwerveChassis().resetHeadingHoldAfterGyroReset();
     m_robotContainer.getSwerveChassis().resetOdometry(m_robotContainer.getSwerveChassis().getPose());
