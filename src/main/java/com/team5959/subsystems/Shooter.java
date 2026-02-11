@@ -21,15 +21,22 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Shooter extends SubsystemBase {
 
    // Creacion de objeto de Shooter
-  private final SparkMax shooterMotorRight = new SparkMax(20, MotorType.kBrushless); // Motor del shooter
+  private final SparkMax shooterMotorRight = new SparkMax(26, MotorType.kBrushless); // Motor del shooter
   private final SparkMaxConfig shooterMotorRightConfig = new SparkMaxConfig(); // Configuración del motor del shooter
   private final SparkClosedLoopController shooterRightPid = shooterMotorRight.getClosedLoopController(); // Controlador PID del shooter
 
-  private final SparkMax shooterMotorLeft = new SparkMax(21, MotorType.kBrushless); // Motor del shooter
+  private final SparkMax shooterMotorLeft = new SparkMax(25, MotorType.kBrushless); // Motor del shooter
   private final SparkMaxConfig shooterMotorLeftConfig = new SparkMaxConfig(); // Configuración del motor del shooter
+
+  private final SparkMax shooterFeederMotor = new SparkMax(27, MotorType.kBrushless); // Motor del shooter
+  private final SparkMaxConfig shooterFeederMotorConfig = new SparkMaxConfig(); // Configuración del motor del shooter
+  private final SparkClosedLoopController shooterFeederMotorPid = shooterFeederMotor.getClosedLoopController(); 
 
   private double shooterSetPoint = 0;//Variable para almacenar el setpoint del shooter
   private boolean shooterEnabled = false;
+
+  private double shooterFeederSetPoint = 0;//Variable para almacenar el setpoint del shooter
+  private boolean shooterFeederEnabled = false;
 
   
 
@@ -76,18 +83,28 @@ public class Shooter extends SubsystemBase {
     shooterMotorLeftConfig.idleMode(IdleMode.kBrake); //Configura el modo Libre sin freno
     shooterMotorLeftConfig.inverted(false);//Invierte el giro del motor
     shooterMotorLeftConfig.smartCurrentLimit(40);//Establece el límite de corriente
-    shooterMotorLeftConfig.follow(shooterMotorRight, true); // El motor izquierdo sigue al derecho
+    shooterMotorLeftConfig.follow(shooterMotorRight, false); // El motor izquierdo sigue al derecho
+
+    shooterFeederMotorConfig.idleMode(IdleMode.kBrake); //Configura el modo Libre sin freno
+    shooterFeederMotorConfig.inverted(false);//Invierte el giro del motor
+    shooterFeederMotorConfig.smartCurrentLimit(40);//Establece el límite de corriente
 
     //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
     shooterMotorRightConfig.closedLoop.pidf(0.000001, 0, 0, 0.000172); // Valores PID y FF ajustados manualmente
     shooterMotorRightConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
-
     shooterSetPoint = 0; // Setpoint inicial del shooter
+
+
+    //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
+  //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
+    shooterFeederMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.000172); // Valores PID y FF ajustados manualmente
+    shooterFeederMotorConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
+    shooterFeederSetPoint = 0; // Setpoint inicial del shooter
 
     // Aplica la configuración al motor del shooter
     shooterMotorRight.configure(shooterMotorRightConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     shooterMotorLeft.configure(shooterMotorLeftConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-
+    shooterFeederMotor.configure(shooterMotorRightConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);    
      // Envía los controles PID del Shooter al SmartDashboard para ajustes en tiempo real
      //SmartDashboard.putData("PID Shooter", pidShooterSendable); 
 
@@ -103,6 +120,21 @@ public class Shooter extends SubsystemBase {
     double adjustedSetPoint = shooterSetPoint * voltageCompensationFactor;
 
     shooterRightPid.setReference(adjustedSetPoint, ControlType.kVelocity); // Control PID para el shooter
+  
+  }
+
+
+  public void setShooterFeederPIDSpeed(double setPoint) {
+    shooterFeederSetPoint = setPoint; // Método para establecer el setpoint del shooter
+    shooterFeederEnabled = true;
+
+    // Ajusta el setpoint basado en el voltaje de la batería
+    double batteryVoltage = edu.wpi.first.wpilibj.RobotController.getBatteryVoltage();
+    double voltageCompensationFactor = 12.0 / batteryVoltage; // Factor de compensación basado en 12V nominales
+    double adjustedSetPoint = shooterFeederSetPoint * voltageCompensationFactor;
+
+    shooterFeederMotorPid.setReference(adjustedSetPoint, ControlType.kVelocity); // Control PID para el shooter
+  
   }
 
   public void stopShooter() {
@@ -110,9 +142,20 @@ public class Shooter extends SubsystemBase {
     shooterEnabled = false;
   }
 
-  public boolean  isStopped(){
+   public void stopFeeder() {
+    shooterFeederMotor.stopMotor(); // Método para detener el shooter estableciendo el setpoint a 0
+    shooterFeederEnabled = false;
+  }
+
+  public boolean  isShooterStopped(){
     
     return shooterEnabled;
+    // Método para verificar si el shooter está detenido
+  }
+
+  public boolean  isFeederStopped(){
+    
+    return shooterFeederEnabled;
     // Método para verificar si el shooter está detenido
   }
 

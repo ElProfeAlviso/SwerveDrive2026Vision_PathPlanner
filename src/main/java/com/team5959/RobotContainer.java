@@ -68,9 +68,9 @@ public class RobotContainer {
   private final JoystickButton climberDownButton = new JoystickButton(control, 7);
 
   private final JoystickButton climberStartPosition = new JoystickButton(control, 2);
-  private final JoystickButton climberL1Position = new JoystickButton(control, 3);
-  private final JoystickButton climberL2Position = new JoystickButton(control, 4);
-  private final JoystickButton climberL3Position = new JoystickButton(control, 1);
+  private final JoystickButton climberHangPosition = new JoystickButton(control, 4);
+  private final JoystickButton climberMonkeyPosition = new JoystickButton(control, 3);
+  
 
   public RobotContainer() {
 
@@ -121,7 +121,7 @@ public class RobotContainer {
             : stream);
 
     SmartDashboard.putData("Auto Chooser", autoChooser);
-    //SmartDashboard.putData("Command Scheduler", CommandScheduler.getInstance());
+    SmartDashboard.putData("Command Scheduler", CommandScheduler.getInstance());
 
     // Configurar los comandos predeterminados de los subsistemas. En este caso, el
     // chasis swerve
@@ -170,13 +170,13 @@ public class RobotContainer {
     IntakeOUTButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
 
 
-     climberUpButton.whileTrue(new ClimberWithJoystick(climber, 0.5));
-     climberDownButton.whileTrue(new ClimberWithJoystick(climber, -0.5));
+     climberUpButton.whileTrue(new ClimberWithJoystick(climber, 0.3));
+     climberDownButton.whileTrue(new ClimberWithJoystick(climber, -0.3));
 
     climberStartPosition.onTrue(new ClimberPID(climber, 0));
-    climberL1Position.onTrue(new ClimberPID(climber, 50));
-    climberL2Position.onTrue(new ClimberPID(climber, 100));
-    climberL3Position.onTrue(new ClimberPID(climber, 150));
+    climberHangPosition.onTrue(new ClimberPID(climber, 235));
+    climberMonkeyPosition.onTrue(new ClimberPID(climber, 70));
+    
 
 
   }

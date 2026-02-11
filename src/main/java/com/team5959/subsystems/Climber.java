@@ -25,12 +25,12 @@ public class Climber extends SubsystemBase {
 
   // Creacion de objeto de sensor de distancia y deteccion de objetos CANrange
   private final CANBus kCANBus = new CANBus("rio");
-  private final CANrange canRange = new CANrange(30, kCANBus);
+  private final CANrange canRange = new CANrange(15, kCANBus);
 
   // Creacion de objeto de Climber
-  private final SparkMax climberRightMotor = new SparkMax(16, MotorType.kBrushless); // Motor del climber
+  private final SparkMax climberRightMotor = new SparkMax(22, MotorType.kBrushless); // Motor del climber
   private final SparkMaxConfig climberRightMotorConfig = new SparkMaxConfig(); // Configuración del motor del climber
-  private final SparkMax climberLeftMotor = new SparkMax(17, MotorType.kBrushless); // Motor del climber
+  private final SparkMax climberLeftMotor = new SparkMax(21, MotorType.kBrushless); // Motor del climber
   private final SparkMaxConfig climberLeftMotorConfig = new SparkMaxConfig(); // Configuración del motor del climber
 
 
@@ -79,11 +79,11 @@ public class Climber extends SubsystemBase {
   public Climber() {
 
      // Envía los controles PID del Climber al SmartDashboard para ajustes en tiempo real
-    // SmartDashboard.putData("PID Climber", pidClimberSendable);
+     SmartDashboard.putData("PID Climber", pidClimberSendable);
 
     // Configuracion de motor de Climber
     climberRightMotorConfig.idleMode(IdleMode.kBrake); // Configura el modo de inactividad en freno
-    climberRightMotorConfig.inverted(true); // Invierte el giro del motor
+    climberRightMotorConfig.inverted(false); // Invierte el giro del motor
     climberRightMotorConfig.smartCurrentLimit(40); // Establece el límite de corriente
 
     // Configuracion de motor de Climber
@@ -94,21 +94,22 @@ public class Climber extends SubsystemBase {
 
 
     //climberRightMotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder); // Usa el encoder interno como sensor de retroalimentación
-    climberRightMotorConfig.closedLoop.pid(0.35, 0.000001, 0.001); // Valores PID ajustados manualmente (Usando Rev Hardware Client
+    climberRightMotorConfig.closedLoop.pid(0.1, 0.000001, 0.001); // Valores PID ajustados manualmente (Usando Rev Hardware Client
     climberRightMotorConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
     climberSetPoint = 0; // Setpoint inicial del climber
 
     // Configuración de límites suaves (soft limits) del Climber
     climberRightSoftLimitsConfig.forwardSoftLimitEnabled(true); // Habilita límite suave hacia adelante
-    climberRightSoftLimitsConfig.forwardSoftLimit(150); // Posición máxima hacia adelante
+    climberRightSoftLimitsConfig.forwardSoftLimit(235); // Posición máxima hacia adelante
     climberRightSoftLimitsConfig.reverseSoftLimitEnabled(true); // Habilita límite suave hacia atrás
     climberRightSoftLimitsConfig.reverseSoftLimit(0); // Posición mínima hacia atrás
 
     // Configuración de límites suaves (soft limits) del Climber
     climberLeftSoftLimitsConfig.forwardSoftLimitEnabled(true); // Habilita límite suave hacia adelante
-    climberLeftSoftLimitsConfig.forwardSoftLimit(150); // Posición máxima hacia adelante
+    climberLeftSoftLimitsConfig.forwardSoftLimit(235); // Posición máxima hacia adelante
     climberLeftSoftLimitsConfig.reverseSoftLimitEnabled(true); // Habilita límite suave hacia atrás
     climberLeftSoftLimitsConfig.reverseSoftLimit(0); // Posición mínima hacia atrás
+
     climberLeftMotorConfig.follow(climberRightMotor, true);
 
     // Aplica la configuración de límites suaves y del motor
@@ -165,20 +166,14 @@ public class Climber extends SubsystemBase {
   @Override
   public void periodic() {  
     
-    
-/* 
    
-
-    // Actualiza el SmartDashboard con la posición del encoder del Climber
-    SmartDashboard.putNumber("Climber Position Encoder", climberRightMotor.getEncoder().getPosition());
-
      //PID Climber Smartdashboard
     SmartDashboard.putNumber("Climber Set Point", climberSetPoint);
-    SmartDashboard.putNumber("Climber Encoder", climberRightMotor.getEncoder().getPosition());
-    SmartDashboard.putNumber("Climber Output", climberRightMotor.getAppliedOutput());
+    SmartDashboard.putNumber("Climber Encoder position", climberRightMotor.getEncoder().getPosition());
+    SmartDashboard.putNumber("Climber Motor Output", climberRightMotor.getAppliedOutput());
     SmartDashboard.putBoolean("LLego a posicion", isAtPosition(climberSetPoint, 2));
     SmartDashboard.putBoolean("Climber PID Enabled", climberEnablePID);
     SmartDashboard.putNumber("Climber Manual Speed", climberManualSpeed);
-     */
+     
   }
 }
