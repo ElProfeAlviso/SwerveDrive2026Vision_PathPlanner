@@ -83,7 +83,7 @@ public class Shooter extends SubsystemBase {
     shooterMotorLeftConfig.idleMode(IdleMode.kBrake); //Configura el modo Libre sin freno
     shooterMotorLeftConfig.inverted(false);//Invierte el giro del motor
     shooterMotorLeftConfig.smartCurrentLimit(40);//Establece el límite de corriente
-    shooterMotorLeftConfig.follow(shooterMotorRight, false); // El motor izquierdo sigue al derecho
+    shooterMotorLeftConfig.follow(shooterMotorRight, true); // El motor izquierdo sigue al derecho
 
     shooterFeederMotorConfig.idleMode(IdleMode.kBrake); //Configura el modo Libre sin freno
     shooterFeederMotorConfig.inverted(false);//Invierte el giro del motor
@@ -122,7 +122,17 @@ public class Shooter extends SubsystemBase {
     shooterRightPid.setReference(adjustedSetPoint, ControlType.kVelocity); // Control PID para el shooter
   
   }
+  
+  public void setShooterManualSpeed(double speed) {
 
+    double shooterspeed = speed; // Método para establecer el setpoint del shooter
+    shooterEnabled = true;
+
+    shooterMotorRight.set(shooterspeed); // Control manual para el shooter
+    // Ajusta el setpoint basado en el voltaje de la batería
+    
+  
+  }
 
   public void setShooterFeederPIDSpeed(double setPoint) {
     shooterFeederSetPoint = setPoint; // Método para establecer el setpoint del shooter

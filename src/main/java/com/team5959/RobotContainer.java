@@ -32,6 +32,7 @@ import com.team5959.commands.ShooterPIDCmd;
 import com.team5959.commands.ShooterStopCmd;
 import com.team5959.commands.SwerveDriveJoystickCmd;
 import com.team5959.commands.SwerveDriveXLockCmd;
+import com.team5959.commands.setShooterManualSpeed;
 
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Joystick;
@@ -164,9 +165,9 @@ public class RobotContainer {
 
     lockPositionButton.whileTrue(new SwerveDriveXLockCmd(swerveChassis));
 
-    IntakeINButton.onTrue(new ShooterPIDCmd(shooter, 3000)); // mientras presionado
+    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.7)); // mientras presionado
     IntakeINButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
-    IntakeOUTButton.onTrue(new ShooterPIDCmd(shooter, -3000)); // mientras presionado
+    IntakeOUTButton.onTrue(new setShooterManualSpeed(shooter, -0.7)); // mientras presionado
     IntakeOUTButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
 
 
