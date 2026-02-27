@@ -23,5 +23,7 @@ public class ShooterStopCmd extends InstantCommand {
   @Override
   public void initialize() {
     shooter.stopShooter(); // Stop the shooter motor
+    shooter.stopFeeder();
+    shooter.stopIndexer();
   }
 }

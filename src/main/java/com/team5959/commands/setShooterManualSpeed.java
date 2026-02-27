@@ -11,13 +11,17 @@ import com.team5959.subsystems.Shooter;
 public class setShooterManualSpeed extends Command {
 
   private final Shooter shooter; // Subsystem that controls the shooter
-  private final double speed; // Desired setpoint for the shooter
+  private final double shooterspeed; // Desired setpoint for the shooter
+  private final double feederspeed; // Desired setpoint for the shooter
+  
+  
   
 
   /** Creates a new ShooterPID. */
-  public setShooterManualSpeed(Shooter shooterSubsystem, double speed) {
+  public setShooterManualSpeed(Shooter shooterSubsystem, double shooterspeed, double feederspeed) {
     this.shooter = shooterSubsystem;
-    this.speed = speed;
+    this.shooterspeed = shooterspeed;
+     this.feederspeed = feederspeed;
 
     addRequirements(shooter);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -26,7 +30,9 @@ public class setShooterManualSpeed extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooter.setShooterManualSpeed(speed);
+    shooter.setShooterManualSpeed(shooterspeed);
+    shooter.setShooterFeederSpeed(feederspeed);
+    shooter.setShooterIndexerSpeed(feederspeed*0.8);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -165,9 +165,9 @@ public class RobotContainer {
 
     lockPositionButton.whileTrue(new SwerveDriveXLockCmd(swerveChassis));
 
-    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.7)); // mientras presionado
+    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.85, 0.5)); // mientras presionado
     IntakeINButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
-    IntakeOUTButton.onTrue(new setShooterManualSpeed(shooter, -0.7)); // mientras presionado
+    IntakeOUTButton.onTrue(new setShooterManualSpeed(shooter, -0.7,-0.3)); // mientras presionado
     IntakeOUTButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
 
 
@@ -175,8 +175,8 @@ public class RobotContainer {
      climberDownButton.whileTrue(new ClimberWithJoystick(climber, -0.3));
 
     climberStartPosition.onTrue(new ClimberPID(climber, 0));
-    climberHangPosition.onTrue(new ClimberPID(climber, 235));
-    climberMonkeyPosition.onTrue(new ClimberPID(climber, 70));
+    climberHangPosition.onTrue(new ClimberPID(climber, 0));
+    climberMonkeyPosition.onTrue(new ClimberPID(climber, 0));
     
 
 
