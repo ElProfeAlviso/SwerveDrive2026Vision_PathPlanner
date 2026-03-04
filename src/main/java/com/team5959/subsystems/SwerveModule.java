@@ -17,7 +17,7 @@ import edu.wpi.first.math.geometry.Rotation2d; // Representación de rotación e
 import edu.wpi.first.math.kinematics.SwerveModulePosition; // Posición de un módulo swerve
 import edu.wpi.first.math.kinematics.SwerveModuleState; // Estado de un módulo swerve
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; // Herramienta para mostrar datos en tiempo real
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; // Herramienta para mostrar datos en tiempo real
 
 import com.team5959.SwerveModuleConstants; // Constantes específicas para el módulo swerve
 import com.team5959.Constants.SwerveConstants; // Constantes generales para el sistema swerve

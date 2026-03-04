@@ -5,7 +5,7 @@
 package com.team5959.subsystems;
 
 import com.ctre.phoenix6.CANBus;
-import com.ctre.phoenix6.hardware.CANrange;
+
 import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -19,15 +19,13 @@ import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.DigitalInput;
+
 
 
 public class ClimberSubsystem extends SubsystemBase {
 
-  // Creacion de objeto de sensor de distancia y deteccion de objetos CANrange
-  private final CANBus kCANBus = new CANBus("rio");
-  private final CANrange canRange = new CANrange(15, kCANBus);
-
-  // Creacion de objeto de Climber
+   // Creacion de objeto de Climber
   private final SparkMax climberRightMotor = new SparkMax(22, MotorType.kBrushless); // Motor del climber
   private final SparkMaxConfig climberRightMotorConfig = new SparkMaxConfig(); // Configuración del motor del climber
   private final SparkMax climberLeftMotor = new SparkMax(21, MotorType.kBrushless); // Motor del climber
@@ -44,6 +42,8 @@ public class ClimberSubsystem extends SubsystemBase {
   private double currentPosition = 0;
   private boolean climberEnablePID = false; // Variable para habilitar o deshabilitar el control PID del climber
   private double climberManualSpeed = 0;
+
+  private final DigitalInput climberLimitSwitchBajo = new DigitalInput(0); // Limit switch superior del climber
 
   // Creacion de objeto de Sendable personalizado del Climber PID Sparkmax para envio a elastic.
   // Esto crea un objeto en el dashboard que permite modificar los valores del PID en tiempo real.
@@ -159,6 +159,55 @@ public class ClimberSubsystem extends SubsystemBase {
     climberPid.setReference(currentPosition, ControlType.kPosition);
   }
 
+  /**
+   * Return true if the lower limit switch is triggered.
+   * The digital input is exposed so commands can check the homing switch.
+   */
+  public boolean isLowerLimitSwitchPressed() {
+    return !climberLimitSwitchBajo.get();
+  }
+
+  /**
+   * Reset both climber encoder positions to zero. Call this after homing.
+   */
+  public void resetEncoderPosition() {
+    climberRightMotor.getEncoder().setPosition(0);
+    climberLeftMotor.getEncoder().setPosition(0);
+  }
+
+  /**
+   * Enable or disable soft limits at runtime for both climber motors.
+   * Disable soft limits before performing a homing move if the configured
+   * limits would prevent the motor from reaching the switch.
+   */
+  public void setSoftLimitsEnabled(boolean enabled) {
+    // Right
+    climberRightSoftLimitsConfig.forwardSoftLimitEnabled(enabled);
+    climberRightSoftLimitsConfig.reverseSoftLimitEnabled(enabled);
+    climberRightMotorConfig.apply(climberRightSoftLimitsConfig);
+    climberRightMotor.configure(climberRightMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+
+    // Left
+    climberLeftSoftLimitsConfig.forwardSoftLimitEnabled(enabled);
+    climberLeftSoftLimitsConfig.reverseSoftLimitEnabled(enabled);
+    climberLeftMotorConfig.apply(climberLeftSoftLimitsConfig);
+    climberLeftMotor.configure(climberLeftMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+  }
+
+  /**
+   * Adjust the reverse soft limit value (useful if you need to expand the
+   * allowed travel for homing). Call configure changes will be persisted to the motor.
+   */
+  public void setReverseSoftLimit(double reverseLimit) {
+    climberRightSoftLimitsConfig.reverseSoftLimit(reverseLimit);
+    climberRightMotorConfig.apply(climberRightSoftLimitsConfig);
+    climberRightMotor.configure(climberRightMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+
+    climberLeftSoftLimitsConfig.reverseSoftLimit(reverseLimit);
+    climberLeftMotorConfig.apply(climberLeftSoftLimitsConfig);
+    climberLeftMotor.configure(climberLeftMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
+  }
+
 
 
   
@@ -174,6 +223,7 @@ public class ClimberSubsystem extends SubsystemBase {
     SmartDashboard.putBoolean("LLego a posicion", isAtPosition(climberSetPoint, 2));
     SmartDashboard.putBoolean("Climber PID Enabled", climberEnablePID);
     SmartDashboard.putNumber("Climber Manual Speed", climberManualSpeed);
+    SmartDashboard.putBoolean("Climber Limit Switch Bajo", isLowerLimitSwitchPressed());
      
   }
 }

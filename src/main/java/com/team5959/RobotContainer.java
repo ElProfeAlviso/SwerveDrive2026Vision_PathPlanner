@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.StartEndCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -27,9 +29,13 @@ import com.team5959.subsystems.ShooterSubsystem;
 import com.team5959.subsystems.SwerveChassis;
 import com.team5959.subsystems.IntakeSubsystem;
 import com.team5959.commands.ClimberHoldPosition;
+import com.team5959.commands.ClimberHomeCmd;
 import com.team5959.commands.ClimberPID;
 import com.team5959.commands.ClimberWithJoystick;
+import com.team5959.commands.IntakeHoldPosition;
+import com.team5959.commands.IntakeInitialPosition;
 import com.team5959.commands.IntakeLowPosition;
+import com.team5959.commands.IntakeMidPosition;
 import com.team5959.commands.ShooterPIDCmd;
 import com.team5959.commands.ShooterStopCmd;
 import com.team5959.commands.SwerveDriveJoystickCmd;
@@ -58,31 +64,21 @@ public class RobotContainer {
   private final IntakeSubsystem intake = new IntakeSubsystem();
 
   // Creacion de objetos de CONTROLES
-  private final PS4Controller control = new PS4Controller(ControllerConstants.kDriverControllerPort);
+  private final CommandPS4Controller Drivercontrol = new CommandPS4Controller(ControllerConstants.kDriverControllerPort);
+  private final CommandPS4Controller Operatorcontrol = new CommandPS4Controller(ControllerConstants.kOperatorControllerPort);
 
-  // Creacion de objetos de BOTONES para asignar nombres claros
-  private final JoystickButton resetPosButton = new JoystickButton(control, 9);
-  private final JoystickButton resetNavxButton = new JoystickButton(control, 10);
-  private final JoystickButton lockPositionButton = new JoystickButton(control, 14);
-
-  private final JoystickButton IntakeINButton = new JoystickButton(control, 6);
-  private final JoystickButton IntakeOUTButton = new JoystickButton(control, 5);
-
-  private final JoystickButton climberUpButton = new JoystickButton(control, 8);
-  private final JoystickButton climberDownButton = new JoystickButton(control, 7);
-
-  private final JoystickButton climberStartPosition = new JoystickButton(control, 2);
-  private final JoystickButton climberHangPosition = new JoystickButton(control, 4);
-  private final JoystickButton climberMonkeyPosition = new JoystickButton(control, 3);
+  
   
 
   public RobotContainer() {
 
+    /* 
     // Registro de comandos nombrados para pathplanner
     NamedCommands.registerCommand("runIntakeCmd", new ClimberPID(climber, 100));
     NamedCommands.registerCommand("offtakeCmd", new ShooterStopCmd(shooter));
     NamedCommands.registerCommand("scorereef", new ShooterPIDCmd(shooter, -3000 ).withTimeout(0.4));
     NamedCommands.registerCommand("getcoral", new ShooterPIDCmd(shooter, 3000 ).withTimeout(1));
+      */
 
     // Registro de triggers de pathplanner
     new EventTrigger("Prepareforscore").onTrue(Commands.runOnce(() -> {
@@ -130,12 +126,14 @@ public class RobotContainer {
     // Configurar los comandos predeterminados de los subsistemas. En este caso, el
     // chasis swerve
     swerveChassis.setDefaultCommand(new SwerveDriveJoystickCmd(swerveChassis,
-        () -> control.getLeftY(),
-        () -> control.getLeftX(),
-        () -> control.getRightX(),
+        () -> Drivercontrol.getLeftY(),
+        () -> Drivercontrol.getLeftX(),
+        () -> Drivercontrol.getRightX(),
         true));
 
         climber.setDefaultCommand(new ClimberHoldPosition(climber));
+
+        //intake.setDefaultCommand(new IntakeHoldPosition(intake));
 
 
     // Configure the trigger bindings method.
@@ -150,11 +148,12 @@ public class RobotContainer {
   // referencias de método
   private void configureBindings() {
 
-    resetNavxButton.onTrue(new InstantCommand(() -> {
+    Drivercontrol.options().onTrue(new InstantCommand(() -> {
       swerveChassis.resetNavx();
       swerveChassis.resetHeadingHoldAfterGyroReset();
     }));
-    resetPosButton.onTrue(new InstantCommand(() -> {
+
+    Drivercontrol.share().onTrue(new InstantCommand(() -> {
       // 1. Resetear navX primero
       // swerveChassis.resetNavx();
       swerveChassis.resetHeadingHoldAfterGyroReset();
@@ -166,23 +165,28 @@ public class RobotContainer {
       swerveChassis.resetDriveEncoders();
     }, swerveChassis));
 
-    lockPositionButton.whileTrue(new SwerveDriveXLockCmd(swerveChassis));
+    //lockPositionButton.whileTrue(new SwerveDriveXLockCmd(swerveChassis));
 
-    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.85, 0.7)); // mientras presionado
-    IntakeINButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
-    IntakeOUTButton.onTrue(new setShooterManualSpeed(shooter, -0.7,-0.3)); // mientras presionado
-    IntakeOUTButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
+    //Control y Botones de Driver 1 
 
-
-     climberUpButton.whileTrue(new ClimberWithJoystick(climber, 0.3));
-     climberDownButton.whileTrue(new ClimberWithJoystick(climber, -0.3));
-
-    climberStartPosition.onTrue(new IntakeLowPosition(intake));
-    climberHangPosition.onTrue(new ClimberPID(climber, 0));
-    climberMonkeyPosition.onTrue(new ClimberPID(climber, 0));
+    Drivercontrol.cross().onTrue(new IntakeLowPosition(intake)); // mientras presionado
+    Drivercontrol.triangle().onTrue(new IntakeInitialPosition(intake)); // al soltar
+    Drivercontrol.circle().onTrue(new IntakeMidPosition(intake)); // mientras presionado
+    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(5000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-5000), () -> intake.stopRollerMotor(), intake)); 
     
+    //Control y Botones de Operador 
 
+    Operatorcontrol.L1().onTrue(new ClimberPID(climber, 70)); // mientras presionado
+    Operatorcontrol.R1().onTrue(new ClimberPID(climber, 215)); //
+    Operatorcontrol.PS().whileTrue(new ClimberHomeCmd(climber)); // mientras presionado
 
+    Operatorcontrol.R2().onTrue(new ClimberWithJoystick(climber, 0.5));
+    Operatorcontrol.R2().onFalse(new ClimberHoldPosition(climber));
+    Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.5));
+    Operatorcontrol.L2().onFalse(new ClimberHoldPosition(climber));
+    
+    
   }
 
   public void periodic() {
