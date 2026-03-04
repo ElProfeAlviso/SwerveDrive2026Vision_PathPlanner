@@ -5,15 +5,15 @@
 package com.team5959.commands;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import com.team5959.subsystems.Shooter;
+import com.team5959.subsystems.ShooterSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ShooterStopCmd extends InstantCommand {
-  private Shooter shooter; // Subsystem that controls the shooter
+  private ShooterSubsystem shooter; // Subsystem that controls the shooter
 
-  public ShooterStopCmd(Shooter shooterSubsystem) {
+  public ShooterStopCmd(ShooterSubsystem shooterSubsystem) {
     this.shooter = shooterSubsystem;
     addRequirements(shooter);
     // Use addRequirements() here to declare subsystem dependencies.

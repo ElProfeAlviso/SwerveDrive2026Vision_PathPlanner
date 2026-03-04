@@ -5,25 +5,16 @@
 package com.team5959.commands;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import com.team5959.subsystems.ClimberSubsystem;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ClimberHoldPosition extends InstantCommand {
-  private final ClimberSubsystem climber;
-
-
-  public ClimberHoldPosition(ClimberSubsystem climber) {
-    this.climber = climber;
-    addRequirements(climber);
+public class IntakeMidPosition extends InstantCommand {
+  public IntakeMidPosition() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-
-    climber.holdClimberPosition();
-  }
+  public void initialize() {}
 }

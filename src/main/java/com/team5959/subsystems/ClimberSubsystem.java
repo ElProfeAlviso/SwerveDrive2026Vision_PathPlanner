@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
-public class Climber extends SubsystemBase {
+public class ClimberSubsystem extends SubsystemBase {
 
   // Creacion de objeto de sensor de distancia y deteccion de objetos CANrange
   private final CANBus kCANBus = new CANBus("rio");
@@ -76,7 +76,7 @@ public class Climber extends SubsystemBase {
   
 
   /** Creates a new Elevator. */
-  public Climber() {
+  public ClimberSubsystem() {
 
      // Envía los controles PID del Climber al SmartDashboard para ajustes en tiempo real
      SmartDashboard.putData("PID Climber", pidClimberSendable);

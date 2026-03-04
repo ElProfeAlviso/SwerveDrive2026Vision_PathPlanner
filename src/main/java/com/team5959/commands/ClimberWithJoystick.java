@@ -5,15 +5,15 @@
 package com.team5959.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import com.team5959.subsystems.Climber;
+import com.team5959.subsystems.ClimberSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class ClimberWithJoystick extends Command {
-  private final Climber climber; // The subsystem used by this command 
+  private final ClimberSubsystem climber; // The subsystem used by this command 
   private final double speed;
 
   /** Creates a new ClimberWithJoystick. */
-  public ClimberWithJoystick(Climber climber,double speed) {
+  public ClimberWithJoystick(ClimberSubsystem climber,double speed) {
     this.climber = climber;
     this.speed = speed;
 

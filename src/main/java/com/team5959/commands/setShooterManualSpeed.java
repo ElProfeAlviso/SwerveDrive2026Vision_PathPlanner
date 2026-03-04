@@ -5,12 +5,12 @@
 package com.team5959.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import com.team5959.subsystems.Shooter;
+import com.team5959.subsystems.ShooterSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class setShooterManualSpeed extends Command {
 
-  private final Shooter shooter; // Subsystem that controls the shooter
+  private final ShooterSubsystem shooter; // Subsystem that controls the shooter
   private final double shooterspeed; // Desired setpoint for the shooter
   private final double feederspeed; // Desired setpoint for the shooter
   
@@ -18,7 +18,7 @@ public class setShooterManualSpeed extends Command {
   
 
   /** Creates a new ShooterPID. */
-  public setShooterManualSpeed(Shooter shooterSubsystem, double shooterspeed, double feederspeed) {
+  public setShooterManualSpeed(ShooterSubsystem shooterSubsystem, double shooterspeed, double feederspeed) {
     this.shooter = shooterSubsystem;
     this.shooterspeed = shooterspeed;
      this.feederspeed = feederspeed;
@@ -32,7 +32,7 @@ public class setShooterManualSpeed extends Command {
   public void initialize() {
     shooter.setShooterManualSpeed(shooterspeed);
     shooter.setShooterFeederSpeed(feederspeed);
-    shooter.setShooterIndexerSpeed(feederspeed*0.8);
+    shooter.setShooterIndexerSpeed(feederspeed*1.2);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

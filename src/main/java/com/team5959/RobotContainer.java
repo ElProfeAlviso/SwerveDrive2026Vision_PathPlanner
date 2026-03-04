@@ -21,13 +21,15 @@ import com.pathplanner.lib.events.EventTrigger;
 import com.pathplanner.lib.events.PointTowardsZoneTrigger;
 
 import com.team5959.Constants.ControllerConstants;
-import com.team5959.subsystems.Climber;
+import com.team5959.subsystems.ClimberSubsystem;
 import com.team5959.subsystems.PhotonVisionSubsystem;
-import com.team5959.subsystems.Shooter;
+import com.team5959.subsystems.ShooterSubsystem;
 import com.team5959.subsystems.SwerveChassis;
+import com.team5959.subsystems.IntakeSubsystem;
 import com.team5959.commands.ClimberHoldPosition;
 import com.team5959.commands.ClimberPID;
 import com.team5959.commands.ClimberWithJoystick;
+import com.team5959.commands.IntakeLowPosition;
 import com.team5959.commands.ShooterPIDCmd;
 import com.team5959.commands.ShooterStopCmd;
 import com.team5959.commands.SwerveDriveJoystickCmd;
@@ -50,9 +52,10 @@ public class RobotContainer {
   private final SendableChooser<Command> autoChooser;
   // Creacion de objetos de SUBSISTEMAS
   private final SwerveChassis swerveChassis = new SwerveChassis();
-  private final Shooter shooter = new Shooter();
-  private final Climber climber = new Climber();
+  private final ShooterSubsystem shooter = new ShooterSubsystem();
+  private final ClimberSubsystem climber = new ClimberSubsystem();
   private final PhotonVisionSubsystem PhotonVisionSubsystem = new PhotonVisionSubsystem();
+  private final IntakeSubsystem intake = new IntakeSubsystem();
 
   // Creacion de objetos de CONTROLES
   private final PS4Controller control = new PS4Controller(ControllerConstants.kDriverControllerPort);
@@ -165,7 +168,7 @@ public class RobotContainer {
 
     lockPositionButton.whileTrue(new SwerveDriveXLockCmd(swerveChassis));
 
-    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.85, 0.5)); // mientras presionado
+    IntakeINButton.onTrue(new setShooterManualSpeed(shooter, 0.85, 0.7)); // mientras presionado
     IntakeINButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
     IntakeOUTButton.onTrue(new setShooterManualSpeed(shooter, -0.7,-0.3)); // mientras presionado
     IntakeOUTButton.onFalse(new ShooterStopCmd(shooter)); // al soltar
@@ -174,7 +177,7 @@ public class RobotContainer {
      climberUpButton.whileTrue(new ClimberWithJoystick(climber, 0.3));
      climberDownButton.whileTrue(new ClimberWithJoystick(climber, -0.3));
 
-    climberStartPosition.onTrue(new ClimberPID(climber, 0));
+    climberStartPosition.onTrue(new IntakeLowPosition(intake));
     climberHangPosition.onTrue(new ClimberPID(climber, 0));
     climberMonkeyPosition.onTrue(new ClimberPID(climber, 0));
     

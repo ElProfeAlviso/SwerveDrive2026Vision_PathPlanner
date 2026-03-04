@@ -18,7 +18,7 @@ import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Shooter extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase {
 
    // Creacion de objeto de Shooter
   private final SparkMax shooterMotorRight = new SparkMax(26, MotorType.kBrushless); // Motor del shooter
@@ -79,7 +79,7 @@ public class Shooter extends SubsystemBase {
   
   
   /** Creates a new Shooter. */
-  public Shooter() {
+  public ShooterSubsystem() {
     // Configuracion de motor de Shooter
     // Configura el modo de inactividad, inversión, límite de corriente y sensor de retroalimentación
     shooterMotorRightConfig.idleMode(IdleMode.kCoast); //Configura el modo Libre sin freno
