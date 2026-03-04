@@ -185,6 +185,40 @@ public class RobotContainer {
     Operatorcontrol.R2().onFalse(new ClimberHoldPosition(climber));
     Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.5));
     Operatorcontrol.L2().onFalse(new ClimberHoldPosition(climber));
+
+    Operatorcontrol.square().toggleOnTrue(
+      new StartEndCommand(
+        () -> {
+          shooter.setShooterPIDSpeed(-3500);
+          shooter.setShooterFeederSpeed(-0.4);
+          shooter.setShooterIndexerSpeed(-0.6);
+        },
+        () -> {
+          shooter.stopShooter();
+          shooter.stopFeeder();
+          shooter.stopIndexer();
+        },
+        shooter, intake
+      )
+    );
+    
+    Operatorcontrol.cross().toggleOnTrue(
+      new StartEndCommand(
+        () -> {
+          shooter.setShooterPIDSpeed(3500);
+          shooter.setShooterFeederSpeed(0.4);
+          shooter.setShooterIndexerSpeed(0.6);
+        },
+        () -> {
+          shooter.stopShooter();
+          shooter.stopFeeder();
+          shooter.stopIndexer();
+        },
+        shooter, intake
+      )
+    ); 
+
+
     
     
   }

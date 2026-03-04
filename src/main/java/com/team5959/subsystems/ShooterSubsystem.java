@@ -34,7 +34,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   private final SparkMax shooterIndexerMotor = new SparkMax(28, MotorType.kBrushless); // Motor del shooter
   private final SparkMaxConfig shooterIndexerMotorConfig = new SparkMaxConfig(); // Configuración del motor del shooter
-  private final SparkClosedLoopController shooterIndexdrMotorPid = shooterFeederMotor.getClosedLoopController(); 
+  private final SparkClosedLoopController shooterIndexerMotorPid = shooterIndexerMotor.getClosedLoopController(); 
 
   private double shooterSetPoint = 0;//Variable para almacenar el setpoint del shooter
   private boolean shooterEnabled = false;
@@ -100,26 +100,26 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterIndexerMotorConfig.smartCurrentLimit(40);//Establece el límite de corriente
 
     //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
-    shooterMotorRightConfig.closedLoop.pidf(0.000001, 0, 0, 0.000172); // Valores PID y FF ajustados manualmente
+    shooterMotorRightConfig.closedLoop.pidf(0.000001, 0, 0, 0.00202); // Valores PID y FF ajustados manualmente
     shooterMotorRightConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
     shooterSetPoint = 0; // Setpoint inicial del shooter
 
 
     //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
   //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
-    shooterFeederMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.000172); // Valores PID y FF ajustados manualmente
+    shooterFeederMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.011); // Valores PID y FF ajustados manualmente
     shooterFeederMotorConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
     shooterFeederSetPoint = 0; // Setpoint inicial del shooter
 
-     shooterIndexerMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.000172); // Valores PID y FF ajustados manualmente
+     shooterIndexerMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.0011); // Valores PID y FF ajustados manualmente
     shooterIndexerMotorConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
     shooterIndexerSetPoint = 0; // Setpoint inicial del shooter
 
     // Aplica la configuración al motor del shooter
     shooterMotorRight.configure(shooterMotorRightConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
     shooterMotorLeft.configure(shooterMotorLeftConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);
-    shooterFeederMotor.configure(shooterMotorRightConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);    
-    shooterIndexerMotor.configure(shooterMotorRightConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);    
+    shooterFeederMotor.configure(shooterFeederMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);    
+    shooterIndexerMotor.configure(shooterIndexerMotorConfig, SparkBase.ResetMode.kResetSafeParameters, SparkBase.PersistMode.kPersistParameters);    
      // Envía los controles PID del Shooter al SmartDashboard para ajustes en tiempo real
      //SmartDashboard.putData("PID Shooter", pidShooterSendable); 
 
@@ -230,11 +230,14 @@ public class ShooterSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
+
+    SmartDashboard.putNumber("Shooter Velocity", shooterMotorRight.getEncoder().getVelocity());
+    SmartDashboard.putNumber("Shooter feeder Velocity", shooterFeederMotor.getEncoder().getVelocity());
    
 /* 
     //PID Shooter Smartdashboard
     SmartDashboard.putNumber("Shooter Set Point", shooterSetPoint);
-    SmartDashboard.putNumber("Shooter Velocity", shooterMotorRight.getEncoder().getVelocity());
+    
     SmartDashboard.putNumber("Shooter Output", shooterMotorRight.getAppliedOutput());
  */
     
