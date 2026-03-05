@@ -189,7 +189,7 @@ public class RobotContainer {
     Operatorcontrol.square().toggleOnTrue(
       new StartEndCommand(
         () -> {
-          shooter.setShooterPIDSpeed(-3500);
+          shooter.setShooterPIDSpeed(-4000);
           shooter.setShooterFeederSpeed(-0.4);
           shooter.setShooterIndexerSpeed(-0.6);
         },

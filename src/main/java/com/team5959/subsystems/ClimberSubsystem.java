@@ -100,13 +100,13 @@ public class ClimberSubsystem extends SubsystemBase {
 
     // Configuración de límites suaves (soft limits) del Climber
     climberRightSoftLimitsConfig.forwardSoftLimitEnabled(true); // Habilita límite suave hacia adelante
-    climberRightSoftLimitsConfig.forwardSoftLimit(235); // Posición máxima hacia adelante
+    climberRightSoftLimitsConfig.forwardSoftLimit(215); // Posición máxima hacia adelante
     climberRightSoftLimitsConfig.reverseSoftLimitEnabled(true); // Habilita límite suave hacia atrás
     climberRightSoftLimitsConfig.reverseSoftLimit(0); // Posición mínima hacia atrás
 
     // Configuración de límites suaves (soft limits) del Climber
     climberLeftSoftLimitsConfig.forwardSoftLimitEnabled(true); // Habilita límite suave hacia adelante
-    climberLeftSoftLimitsConfig.forwardSoftLimit(235); // Posición máxima hacia adelante
+    climberLeftSoftLimitsConfig.forwardSoftLimit(215); // Posición máxima hacia adelante
     climberLeftSoftLimitsConfig.reverseSoftLimitEnabled(true); // Habilita límite suave hacia atrás
     climberLeftSoftLimitsConfig.reverseSoftLimit(0); // Posición mínima hacia atrás
 
