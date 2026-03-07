@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 // Importa la clase CommandScheduler, que se encarga de gestionar la ejecución de comandos.
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+import edu.wpi.first.cameraserver.CameraServer; //web cam
+import edu.wpi.first.cscore.UsbCamera;
 
 /**
  * La máquina virtual está configurada para ejecutar automáticamente esta clase,
@@ -42,6 +44,9 @@ public class Robot extends TimedRobot {
     // de botones y colocará nuestro
     // selector de autónomo en el dashboard.
     m_robotContainer = new RobotContainer();
+    UsbCamera camera = CameraServer.startAutomaticCapture();
+    camera.setResolution(320, 240);
+    camera.setFPS(15);
   }
 
   /**

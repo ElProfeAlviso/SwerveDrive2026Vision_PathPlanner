@@ -28,6 +28,8 @@ import com.team5959.subsystems.PhotonVisionSubsystem;
 import com.team5959.subsystems.ShooterSubsystem;
 import com.team5959.subsystems.SwerveChassis;
 import com.team5959.subsystems.IntakeSubsystem;
+import com.team5959.commands.AutoShooterStartCmd;
+import com.team5959.commands.AutoShooterStopCmd;
 import com.team5959.commands.ClimberHoldPosition;
 import com.team5959.commands.ClimberHomeCmd;
 import com.team5959.commands.ClimberPID;
@@ -36,6 +38,8 @@ import com.team5959.commands.IntakeHoldPosition;
 import com.team5959.commands.IntakeInitialPosition;
 import com.team5959.commands.IntakeLowPosition;
 import com.team5959.commands.IntakeMidPosition;
+import com.team5959.commands.IntakeRollerForward;
+import com.team5959.commands.IntakeRollerStop;
 import com.team5959.commands.ShooterPIDCmd;
 import com.team5959.commands.ShooterStopCmd;
 import com.team5959.commands.SwerveDriveJoystickCmd;
@@ -72,13 +76,19 @@ public class RobotContainer {
 
   public RobotContainer() {
 
-    /* 
+    
     // Registro de comandos nombrados para pathplanner
-    NamedCommands.registerCommand("runIntakeCmd", new ClimberPID(climber, 100));
-    NamedCommands.registerCommand("offtakeCmd", new ShooterStopCmd(shooter));
-    NamedCommands.registerCommand("scorereef", new ShooterPIDCmd(shooter, -3000 ).withTimeout(0.4));
-    NamedCommands.registerCommand("getcoral", new ShooterPIDCmd(shooter, 3000 ).withTimeout(1));
-      */
+    NamedCommands.registerCommand("ShooterStart7Cmd", new AutoShooterStartCmd(shooter, 7));
+    NamedCommands.registerCommand("ShooterStart4Cmd", new AutoShooterStartCmd(shooter, 4));
+    NamedCommands.registerCommand("ShooterStopCmd", new AutoShooterStopCmd(shooter));
+    NamedCommands.registerCommand("IntakeInitialPosition", new IntakeInitialPosition(intake));
+    NamedCommands.registerCommand("IntakeMidPosition", new IntakeMidPosition(intake));
+    NamedCommands.registerCommand("IntakeLowPosition", new IntakeLowPosition(intake));
+    NamedCommands.registerCommand("RollerStart", new IntakeRollerForward(intake));
+    NamedCommands.registerCommand("RollerStop", new IntakeRollerStop(intake));
+
+   
+      
 
     // Registro de triggers de pathplanner
     new EventTrigger("Prepareforscore").onTrue(Commands.runOnce(() -> {
@@ -172,8 +182,8 @@ public class RobotContainer {
     Drivercontrol.cross().onTrue(new IntakeLowPosition(intake)); // mientras presionado
     Drivercontrol.triangle().onTrue(new IntakeInitialPosition(intake)); // al soltar
     Drivercontrol.circle().onTrue(new IntakeMidPosition(intake)); // mientras presionado
-    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(5000), () -> intake.stopRollerMotor(), intake)); 
-    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-5000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(7000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-7000), () -> intake.stopRollerMotor(), intake)); 
     
     //Control y Botones de Operador 
 
@@ -181,9 +191,9 @@ public class RobotContainer {
     Operatorcontrol.R1().onTrue(new ClimberPID(climber, 215)); //
     Operatorcontrol.PS().whileTrue(new ClimberHomeCmd(climber)); // mientras presionado
 
-    Operatorcontrol.R2().onTrue(new ClimberWithJoystick(climber, 0.5));
+    Operatorcontrol.R2().onTrue(new ClimberWithJoystick(climber, 0.7));
     Operatorcontrol.R2().onFalse(new ClimberHoldPosition(climber));
-    Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.5));
+    Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.7));
     Operatorcontrol.L2().onFalse(new ClimberHoldPosition(climber));
 
     Operatorcontrol.square().toggleOnTrue(
@@ -191,7 +201,7 @@ public class RobotContainer {
         () -> {
           shooter.setShooterPIDSpeed(-4000);
           shooter.setShooterFeederSpeed(-0.4);
-          shooter.setShooterIndexerSpeed(-0.6);
+          shooter.setShooterIndexerSpeed(-0.7);
         },
         () -> {
           shooter.stopShooter();
@@ -205,9 +215,9 @@ public class RobotContainer {
     Operatorcontrol.cross().toggleOnTrue(
       new StartEndCommand(
         () -> {
-          shooter.setShooterPIDSpeed(3500);
+          shooter.setShooterPIDSpeed(4000);
           shooter.setShooterFeederSpeed(0.4);
-          shooter.setShooterIndexerSpeed(0.6);
+          shooter.setShooterIndexerSpeed(0.7);
         },
         () -> {
           shooter.stopShooter();

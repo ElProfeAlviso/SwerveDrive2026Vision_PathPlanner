@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.109128289473684,
-        "y": 2.1776315789473686
+        "x": 4.404943181818181,
+        "y": 0.7
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.8891447368421055,
-        "y": 2.6779605263157897
+        "x": 5.631454545454544,
+        "y": 0.6896931818181815
       },
       "isLocked": false,
-      "linkedName": "EndAzul3"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 0.8387840909090907,
-        "y": 7.405329545454546
+        "x": 7.476374999999999,
+        "y": 0.6955909090909096
       },
       "prevControl": {
-        "x": 6.688784090909086,
-        "y": 7.443816387559808
+        "x": 6.491123983418973,
+        "y": 0.6761938205886386
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "EndAzul4"
+      "linkedName": "FinalIrPorFuelDerecha"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -25.167870149781656
+    "rotation": 90.0
   },
   "reversed": false,
-  "folder": "AutoDemos",
+  "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 122.27564431457773
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

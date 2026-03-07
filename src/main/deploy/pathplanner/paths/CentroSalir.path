@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.446409090909091,
+        "y": 4.045306818181818
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.196419551238537,
+        "y": 4.0475937495985015
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.3538863636363634,
+        "y": 4.045306818181818
+      },
+      "prevControl": {
+        "x": 1.962788971311179,
+        "y": 4.043837204995065
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "FinalSalirCentro"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.1,
+    "maxAcceleration": 2.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "CentroPaths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

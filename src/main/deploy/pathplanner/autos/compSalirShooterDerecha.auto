@@ -7,37 +7,37 @@
         {
           "type": "path",
           "data": {
-            "pathName": "salir"
+            "pathName": "DerechaSalir"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Levantarclimber"
+            "name": "ShooterStartCmd"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DerechaRecogerOutpost"
           }
         },
         {
           "type": "wait",
           "data": {
-            "waitTime": 5.0
+            "waitTime": 3.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "disparar2"
+            "pathName": "DerechaDispararOutpost"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "colgar"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": null
+            "name": "ShooterStartCmd"
           }
         }
       ]

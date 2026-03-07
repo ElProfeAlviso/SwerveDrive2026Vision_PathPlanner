@@ -1,0 +1,171 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeInitialPosition"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DerechaCruzarporFuel"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeLowPosition"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "RollerStart"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DerechaRecogerFuel"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "RollerStop"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "IntakeMidPosition"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DerechaRegresoCruceTrench"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DerechaRegresoTirar"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "ShooterStart7Cmd"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 2.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeInitialPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeMidPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeInitialPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeMidPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeInitialPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeMidPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeInitialPosition"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

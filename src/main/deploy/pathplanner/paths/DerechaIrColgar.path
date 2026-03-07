@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9929090909090905,
-        "y": 2.303454545454546
+        "x": 2.456954545454545,
+        "y": 2.880636363636364
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8069644003541443,
-        "y": 2.1363480762367884
-      },
-      "isLocked": false,
-      "linkedName": "EndAzul1"
-    },
-    {
-      "anchor": {
-        "x": 6.244490131578947,
-        "y": 5.37203947368421
-      },
-      "prevControl": {
-        "x": 3.3897110129154533,
-        "y": 8.434979569750249
-      },
-      "nextControl": {
-        "x": 7.168174342105263,
-        "y": 4.381003289473684
+        "x": 3.3220664058765217,
+        "y": 2.832292225769515
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.821792763157894,
-        "y": 1.1
+        "x": 1.0552272727272725,
+        "y": 2.880636363636364
       },
       "prevControl": {
-        "x": 6.913730729726003,
-        "y": 1.5497596971635226
+        "x": 0.34287934939671194,
+        "y": 2.8951914781616264
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -91.16913932790735
+    "rotation": -90.0
   },
   "reversed": false,
-  "folder": "AutoDemos",
+  "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -59.534455080540255
+    "rotation": 42.97863505964394
   },
   "useDefaultConstraints": true
 }

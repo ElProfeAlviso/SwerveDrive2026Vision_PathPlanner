@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.60125,
-        "y": 2.6332727272727277
+        "x": 5.837590909090909,
+        "y": 0.6955909090909096
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8511768016781023,
-        "y": 2.6393220084659257
+        "x": 2.5703295454545456,
+        "y": 0.14932954545454624
       },
       "isLocked": false,
-      "linkedName": "shoot"
+      "linkedName": "FinalRegresoDerecha"
     },
     {
       "anchor": {
-        "x": 0.570806818181818,
-        "y": 0.6852840909090911
+        "x": 3.0341363636363634,
+        "y": 2.664193181818182
       },
       "prevControl": {
-        "x": 0.3581870081259041,
-        "y": 0.5301210794074069
+        "x": 1.3850454545454542,
+        "y": 1.643818181818182
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "outpost"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 36.32682595212029
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 30.618605408909445
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

@@ -1,0 +1,70 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 7.641284090909091,
+        "y": 4.478193181818182
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.469308894144979,
+        "y": 4.659644364503623
+      },
+      "isLocked": false,
+      "linkedName": "FinalRecogerFUELIZQOK"
+    },
+    {
+      "anchor": {
+        "x": 7.033181818181817,
+        "y": 6.663238636363636
+      },
+      "prevControl": {
+        "x": 7.520986011733384,
+        "y": 6.0321883932412375
+      },
+      "nextControl": {
+        "x": 6.545377624630251,
+        "y": 7.294288879486035
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 5.137,
+        "y": 7.395022727272727
+      },
+      "prevControl": {
+        "x": 5.693295454545454,
+        "y": 7.3537954545454545
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "FinalRegresoIzquierdaOK"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 4.1,
+    "maxAcceleration": 2.5,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -0.9391909457355826
+  },
+  "reversed": false,
+  "folder": "IzquierdaPaths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}

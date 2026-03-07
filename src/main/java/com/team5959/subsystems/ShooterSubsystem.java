@@ -100,7 +100,7 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterIndexerMotorConfig.smartCurrentLimit(40);//Establece el límite de corriente
 
     //shooterMotorRightConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);// Usa el encoder interno como sensor de retroalimentación
-    shooterMotorRightConfig.closedLoop.pidf(0.000001, 0, 0, 0.00202); // Valores PID y FF ajustados manualmente
+    shooterMotorRightConfig.closedLoop.pidf(0.000001, 0, 0, 0.00212); // Valores PID y FF ajustados manualmente
     shooterMotorRightConfig.closedLoop.outputRange(-1, 1); // Rango de salida del controlador PID
     shooterSetPoint = 0; // Setpoint inicial del shooter
 

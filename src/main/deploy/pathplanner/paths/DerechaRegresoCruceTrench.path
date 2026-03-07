@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.570806818181818,
-        "y": 0.6852840909090911
+        "x": 7.476374999999999,
+        "y": 3.5505795454545455
       },
       "prevControl": null,
       "nextControl": {
-        "x": 0.9863557542037733,
-        "y": 1.1576336605520254
+        "x": 7.722791157256188,
+        "y": 3.592758656909071
       },
       "isLocked": false,
-      "linkedName": "outpost"
+      "linkedName": "FinalRecogerFuelDerecha"
     },
     {
       "anchor": {
-        "x": 2.456954545454545,
-        "y": 2.880636363636364
+        "x": 5.837590909090909,
+        "y": 0.6955909090909096
       },
       "prevControl": {
-        "x": 2.301075053331386,
-        "y": 2.6851841087621215
+        "x": 5.633231666471586,
+        "y": 0.40775849254476104
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "disparar2"
+      "linkedName": "FinalRegresoDerecha"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 42.97863505964394
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

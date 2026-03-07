@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.8387840909090907,
-        "y": 7.405329545454546
+        "x": 3.5597840909090905,
+        "y": 4.024693181818182
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.4123170976238613,
-        "y": 6.507457053911907
+        "x": 1.2134669091341141,
+        "y": 1.3672301196911025
       },
       "isLocked": false,
-      "linkedName": "EndAzul4"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9929090909090905,
-        "y": 2.303454545454546
+        "x": 0.457431818181818,
+        "y": 0.5719090909090914
       },
       "prevControl": {
-        "x": 2.4596924544107384,
-        "y": 3.235104034277184
+        "x": 1.0729544292092101,
+        "y": 1.2520530828213197
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "EndAzul1"
+      "linkedName": "finalcentrooutpost"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.534455080540255
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "AutoDemos",
+  "folder": "CentroPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -25.167870149781656
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }
