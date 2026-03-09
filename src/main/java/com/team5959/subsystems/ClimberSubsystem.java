@@ -79,7 +79,7 @@ public class ClimberSubsystem extends SubsystemBase {
   public ClimberSubsystem() {
 
      // Envía los controles PID del Climber al SmartDashboard para ajustes en tiempo real
-     SmartDashboard.putData("PID Climber", pidClimberSendable);
+     //SmartDashboard.putData("PID Climber", pidClimberSendable);
 
     // Configuracion de motor de Climber
     climberRightMotorConfig.idleMode(IdleMode.kBrake); // Configura el modo de inactividad en freno
@@ -217,12 +217,12 @@ public class ClimberSubsystem extends SubsystemBase {
     
    
      //PID Climber Smartdashboard
-    SmartDashboard.putNumber("Climber Set Point", climberSetPoint);
-    SmartDashboard.putNumber("Climber Encoder position", climberRightMotor.getEncoder().getPosition());
-    SmartDashboard.putNumber("Climber Motor Output", climberRightMotor.getAppliedOutput());
-    SmartDashboard.putBoolean("LLego a posicion", isAtPosition(climberSetPoint, 2));
-    SmartDashboard.putBoolean("Climber PID Enabled", climberEnablePID);
-    SmartDashboard.putNumber("Climber Manual Speed", climberManualSpeed);
+   // SmartDashboard.putNumber("Climber Set Point", climberSetPoint);
+    //SmartDashboard.putNumber("Climber Encoder position", climberRightMotor.getEncoder().getPosition());
+    //SmartDashboard.putNumber("Climber Motor Output", climberRightMotor.getAppliedOutput());
+    //SmartDashboard.putBoolean("LLego a posicion", isAtPosition(climberSetPoint, 2));
+    //SmartDashboard.putBoolean("Climber PID Enabled", climberEnablePID);
+    //SmartDashboard.putNumber("Climber Manual Speed", climberManualSpeed);
     SmartDashboard.putBoolean("Climber Limit Switch Bajo", isLowerLimitSwitchPressed());
      
   }

@@ -64,7 +64,7 @@
   "folder": "CentroPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 92.60256220249981
   },
   "useDefaultConstraints": true
 }

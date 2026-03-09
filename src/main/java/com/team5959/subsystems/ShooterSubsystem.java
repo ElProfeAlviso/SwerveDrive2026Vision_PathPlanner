@@ -231,8 +231,8 @@ public class ShooterSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
 
-    SmartDashboard.putNumber("Shooter Velocity", shooterMotorRight.getEncoder().getVelocity());
-    SmartDashboard.putNumber("Shooter feeder Velocity", shooterFeederMotor.getEncoder().getVelocity());
+    //SmartDashboard.putNumber("Shooter Velocity", shooterMotorRight.getEncoder().getVelocity());
+   // SmartDashboard.putNumber("Shooter feeder Velocity", shooterFeederMotor.getEncoder().getVelocity());
    
 /* 
     //PID Shooter Smartdashboard

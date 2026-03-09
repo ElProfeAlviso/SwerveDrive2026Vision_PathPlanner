@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.3538863636363634,
-        "y": 4.045306818181818
+        "x": 2.786772727272727,
+        "y": 3.0970795454545454
       },
       "prevControl": {
-        "x": 1.962788971311179,
-        "y": 4.043837204995065
+        "x": 2.3956753349475424,
+        "y": 3.0956099322677924
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "FinalSalirCentro"
+      "linkedName": "FinalSalirDerecha"
     }
   ],
   "rotationTargets": [],
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 29.744881296942268
   },
   "reversed": false,
   "folder": "CentroPaths",

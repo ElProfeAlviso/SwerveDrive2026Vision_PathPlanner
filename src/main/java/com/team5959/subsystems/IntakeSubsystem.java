@@ -112,7 +112,7 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Intake Pivot Position", absoluteEncoder.getPosition());   
-    SmartDashboard.putNumber("Intake Roller Speed", rollerMotor.getEncoder().getVelocity());
+   // SmartDashboard.putNumber("Intake Roller Speed", rollerMotor.getEncoder().getVelocity());
 
   }
 }

@@ -48,7 +48,7 @@
   "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 0.6185715761142305
   },
   "useDefaultConstraints": true
 }

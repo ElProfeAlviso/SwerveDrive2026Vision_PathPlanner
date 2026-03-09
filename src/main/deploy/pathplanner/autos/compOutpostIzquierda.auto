@@ -5,9 +5,9 @@
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "IntakeInitialPosition"
+            "pathName": "CentroSalir"
           }
         },
         {
@@ -15,9 +15,9 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "named",
                 "data": {
-                  "pathName": "DerechaCruzarporFuel"
+                  "name": "ShooterStart4Cmd"
                 }
               },
               {
@@ -27,13 +27,43 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.6
+                        "waitTime": 2.0
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "IntakeLowPosition"
+                        "name": "IntakeMidPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeInitialPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "IntakeMidPosition"
+                      }
+                    },
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.5
                       }
                     }
                   ]
@@ -43,46 +73,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "DerechaRecogerFuel"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "RollerStart"
-                }
-              }
-            ]
+            "pathName": "DerechaRecogerOutpost"
           }
         },
         {
-          "type": "named",
+          "type": "wait",
           "data": {
-            "name": "RollerStop"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "IntakeMidPosition"
+            "waitTime": 4.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "DerechaRegresoCruceTrench"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "DerechaRegresoTirar"
+            "pathName": "DerechaDispararOutpost"
           }
         },
         {
@@ -102,19 +107,7 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 2.5
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "IntakeInitialPosition"
-                      }
-                    },
-                    {
-                      "type": "wait",
-                      "data": {
-                        "waitTime": 0.5
+                        "waitTime": 2.0
                       }
                     },
                     {

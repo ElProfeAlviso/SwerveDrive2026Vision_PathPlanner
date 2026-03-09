@@ -2,6 +2,7 @@ package com.team5959.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.geometry.Transform3d;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.photonvision.PhotonCamera;
@@ -19,6 +20,10 @@ public class PhotonVisionSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
+          double matchTime = DriverStation.getMatchTime(); // Obtiene el tiempo restante del partido
+
+
+         SmartDashboard.putNumber("Match Time", matchTime);
 
         PhotonPipelineResult result = camera.getLatestResult();
 

@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.137,
-        "y": 7.395022727272727
+        "x": 3.5494772727272723,
+        "y": 6.910602272727273
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.2505795454545447,
-        "y": 7.673306818181818
+        "x": 2.941375,
+        "y": 7.704227272727273
       },
       "isLocked": false,
-      "linkedName": "FinalRegresoIzquierdaOK"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.240272727272727,
-        "y": 4.900772727272726
+        "x": 2.786772727272727,
+        "y": 3.0970795454545454
       },
       "prevControl": {
-        "x": 2.2611249999999994,
-        "y": 7.3950227272727265
+        "x": 0.3543636363636362,
+        "y": 2.7363409090909085
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "FinalSalirDerecha"
     }
   ],
   "rotationTargets": [],
@@ -42,13 +42,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -32.57405713457254
+    "rotation": 29.744881296942268
   },
   "reversed": false,
   "folder": "IzquierdaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": -0.9391909457355826
+    "rotation": 0.0
   },
   "useDefaultConstraints": true
 }

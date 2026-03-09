@@ -182,8 +182,8 @@ public class RobotContainer {
     Drivercontrol.cross().onTrue(new IntakeLowPosition(intake)); // mientras presionado
     Drivercontrol.triangle().onTrue(new IntakeInitialPosition(intake)); // al soltar
     Drivercontrol.circle().onTrue(new IntakeMidPosition(intake)); // mientras presionado
-    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(7000), () -> intake.stopRollerMotor(), intake)); 
-    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-7000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(9000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-9000), () -> intake.stopRollerMotor(), intake)); 
     
     //Control y Botones de Operador 
 
