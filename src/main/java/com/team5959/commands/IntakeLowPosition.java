@@ -21,7 +21,7 @@ public class IntakeLowPosition extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    intakeSubsystem.setPivotPIDPosition(128); // Ajusta el valor según la posición deseada
+    intakeSubsystem.setPivotPIDPosition(125); // Ajusta el valor según la posición deseada
     
   }
 }
