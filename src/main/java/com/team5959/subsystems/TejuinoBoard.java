@@ -5,17 +5,17 @@ import edu.wpi.first.hal.CANAPIJNI;
 public class TejuinoBoard {
 
 
-  public final int TEJUINO_DEVICE_NUMBER_0 = 0;
-  public final int TEJUINO_DEVICE_NUMBER_1 = 1;
+  public static final int TEJUINO_DEVICE_NUMBER_0 = 0;
+  public static final int TEJUINO_DEVICE_NUMBER_1 = 1;
   //Led strip names
-  public final int TEJUINO_ONBOARD_LEDS = 0;
-  public final int TEJUINO_EXTERNAL_LEDS = 1;
-  public final int TEJUINO_EXTERNAL2_LEDS = 2;
+  public static final int TEJUINO_ONBOARD_LEDS = 0;
+  public static final int TEJUINO_EXTERNAL_LEDS = 1;
+  public static final int TEJUINO_EXTERNAL2_LEDS = 2;
 
 
-  public final int LED_STRIP_0 = TEJUINO_ONBOARD_LEDS;
-  public final int LED_STRIP_1 = TEJUINO_EXTERNAL_LEDS;
-  public final int LED_STRIP_2 = TEJUINO_EXTERNAL2_LEDS;
+  public static final int LED_STRIP_0 = TEJUINO_ONBOARD_LEDS;
+  public static final int LED_STRIP_1 = TEJUINO_EXTERNAL_LEDS;
+  public static final int LED_STRIP_2 = TEJUINO_EXTERNAL2_LEDS;
 
   private static final int TEJUINO_MANUFACTURER = 8;
   private static final int TEJUINO_DEVICE_TYPE = 10;

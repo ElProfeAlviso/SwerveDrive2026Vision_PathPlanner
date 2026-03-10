@@ -24,6 +24,7 @@ import com.pathplanner.lib.events.PointTowardsZoneTrigger;
 
 import com.team5959.Constants.ControllerConstants;
 import com.team5959.subsystems.ClimberSubsystem;
+import com.team5959.subsystems.LedsSubsystem;
 import com.team5959.subsystems.PhotonVisionSubsystem;
 import com.team5959.subsystems.ShooterSubsystem;
 import com.team5959.subsystems.SwerveChassis;
@@ -66,6 +67,7 @@ public class RobotContainer {
   private final ClimberSubsystem climber = new ClimberSubsystem();
   private final PhotonVisionSubsystem PhotonVisionSubsystem = new PhotonVisionSubsystem();
   private final IntakeSubsystem intake = new IntakeSubsystem();
+  private final LedsSubsystem leds = new LedsSubsystem();
 
   // Creacion de objetos de CONTROLES
   private final CommandPS4Controller Drivercontrol = new CommandPS4Controller(ControllerConstants.kDriverControllerPort);
@@ -242,5 +244,9 @@ public class RobotContainer {
     return autoChooser.getSelected();
     // return new AutoFollowTrajectoryCmd(swerveChassis);
 
+  }
+
+  public LedsSubsystem getLeds() {
+    return leds;
   }
 }
