@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.786772727272727,
-        "y": 3.0970795454545454
+        "x": 2.8898409090909087,
+        "y": 3.2207613636363637
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0366995289508294,
-        "y": 3.1031288266477435
+        "x": 3.139767710769011,
+        "y": 3.2268106448295617
       },
       "isLocked": false,
       "linkedName": "FinalSalirDerecha"
     },
     {
       "anchor": {
-        "x": 0.10699999999999976,
-        "y": 0.46884090909090903
+        "x": 0.395590909090909,
+        "y": 0.6234431818181827
       },
       "prevControl": {
-        "x": -0.10561981005591412,
-        "y": 0.3136778975892248
+        "x": 0.18297109903499512,
+        "y": 0.4682801703164985
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "DerechaPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 29.744881296942268
+    "rotation": 26.97527647876154
   },
   "useDefaultConstraints": true
 }

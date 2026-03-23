@@ -184,8 +184,8 @@ public class RobotContainer {
     Drivercontrol.cross().onTrue(new IntakeLowPosition(intake)); // mientras presionado
     Drivercontrol.triangle().onTrue(new IntakeInitialPosition(intake)); // al soltar
     Drivercontrol.circle().onTrue(new IntakeMidPosition(intake)); // mientras presionado
-    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(9000), () -> intake.stopRollerMotor(), intake)); 
-    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-9000), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.square().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(5200), () -> intake.stopRollerMotor(), intake)); 
+    Drivercontrol.R1().toggleOnTrue(new StartEndCommand(() -> intake.setRollerPIDSpeed(-5200), () -> intake.stopRollerMotor(), intake)); 
     
     //Control y Botones de Operador 
 
@@ -193,17 +193,17 @@ public class RobotContainer {
     Operatorcontrol.R1().onTrue(new ClimberPID(climber, 215)); //
     Operatorcontrol.PS().whileTrue(new ClimberHomeCmd(climber)); // mientras presionado
 
-    Operatorcontrol.R2().onTrue(new ClimberWithJoystick(climber, 0.7));
+    Operatorcontrol.R2().onTrue(new ClimberWithJoystick(climber, 0.8));
     Operatorcontrol.R2().onFalse(new ClimberHoldPosition(climber));
-    Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.7));
+    Operatorcontrol.L2().onTrue(new ClimberWithJoystick(climber, -0.8));
     Operatorcontrol.L2().onFalse(new ClimberHoldPosition(climber));
 
     Operatorcontrol.square().toggleOnTrue(
       new StartEndCommand(
         () -> {
           shooter.setShooterPIDSpeed(-4000);
-          shooter.setShooterFeederSpeed(-0.4);
-          shooter.setShooterIndexerSpeed(-0.7);
+          shooter.setShooterFeederSpeed(-0.8);
+          shooter.setShooterIndexerSpeed(-0.85);
         },
         () -> {
           shooter.stopShooter();
@@ -218,8 +218,8 @@ public class RobotContainer {
       new StartEndCommand(
         () -> {
           shooter.setShooterPIDSpeed(4000);
-          shooter.setShooterFeederSpeed(0.4);
-          shooter.setShooterIndexerSpeed(0.7);
+          shooter.setShooterFeederSpeed(0.8);
+          shooter.setShooterIndexerSpeed(0.85);
         },
         () -> {
           shooter.stopShooter();

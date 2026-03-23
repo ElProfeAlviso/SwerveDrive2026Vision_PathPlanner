@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.2505795454545447,
-        "y": 7.673306818181818
+        "x": 1.5499545454545451,
+        "y": 7.415636363636363
       },
       "isLocked": false,
       "linkedName": "FinalRegresoIzquierdaOK"
     },
     {
       "anchor": {
-        "x": 3.240272727272727,
-        "y": 4.900772727272726
+        "x": 2.60125,
+        "y": 5.199670454545456
       },
       "prevControl": {
-        "x": 2.2611249999999994,
-        "y": 7.3950227272727265
+        "x": 2.2198977272727274,
+        "y": 7.405329545454546
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,18 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "pointTowardsZones": [],
+  "pointTowardsZones": [
+    {
+      "fieldPosition": {
+        "x": 4.6,
+        "y": 4.0
+      },
+      "rotationOffset": 0.0,
+      "minWaypointRelativePos": 0.6840215439856369,
+      "maxWaypointRelativePos": 1.0,
+      "name": "Point Towards Zone"
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.1,
@@ -42,7 +53,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -32.57405713457254
+    "rotation": -38.884496433714716
   },
   "reversed": false,
   "folder": "IzquierdaPaths",

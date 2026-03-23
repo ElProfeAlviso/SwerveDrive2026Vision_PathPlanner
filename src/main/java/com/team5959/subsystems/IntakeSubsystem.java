@@ -44,7 +44,7 @@ public class IntakeSubsystem extends SubsystemBase {
   .velocityConversionFactor(360.0/60.0)
   .setSparkMaxDataPortConfig();
 
-  pivotMotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder).p(0.012).i(0.000000375).d(0.005);
+  pivotMotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kAbsoluteEncoder).p(0.010).i(0.000000375).d(0.001);
   pivotMotorConfig.closedLoop.outputRange(-1, 1);
 
   pivotSoftLimitsConfig = new SoftLimitConfig(); // Configuración de límites suaves del pivot
@@ -63,7 +63,11 @@ public class IntakeSubsystem extends SubsystemBase {
   rollerMotorConfig = new SparkMaxConfig(); // Configuración del motor del roller
   rollerMotorConfig.idleMode(IdleMode.kBrake).smartCurrentLimit(40).inverted(true);
   rollerMotorConfig.closedLoop.feedbackSensor(FeedbackSensor.kPrimaryEncoder);
-  rollerMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.0011);
+
+
+  //rollerMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.0011);
+
+  rollerMotorConfig.closedLoop.pidf(0.000001, 0, 0, 0.00212); 
   rollerMotorConfig.closedLoop.outputRange(-1, 1);
 
   rollerMotor.configure(rollerMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
@@ -112,7 +116,7 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Intake Pivot Position", absoluteEncoder.getPosition());   
-   // SmartDashboard.putNumber("Intake Roller Speed", rollerMotor.getEncoder().getVelocity());
+   SmartDashboard.putNumber("Intake Roller Speed", rollerMotor.getEncoder().getVelocity());
 
   }
 }

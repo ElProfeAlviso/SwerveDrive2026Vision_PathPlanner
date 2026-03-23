@@ -8,20 +8,20 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.570329545454546,
-        "y": 0.14932954545454624
+        "x": 1.879772727272727,
+        "y": 0.20086363636363713
       },
       "isLocked": false,
       "linkedName": "FinalRegresoDerecha"
     },
     {
       "anchor": {
-        "x": 2.797079545454545,
-        "y": 3.066159090909091
+        "x": 2.910454545454545,
+        "y": 2.8394090909090917
       },
       "prevControl": {
-        "x": 1.147988636363636,
-        "y": 2.0457840909090907
+        "x": 1.2613609568881856,
+        "y": 1.8190384213871744
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,7 +30,18 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "pointTowardsZones": [],
+  "pointTowardsZones": [
+    {
+      "fieldPosition": {
+        "x": 4.625,
+        "y": 4.025
+      },
+      "rotationOffset": 0.0,
+      "minWaypointRelativePos": 0.7055655296229791,
+      "maxWaypointRelativePos": 1.0,
+      "name": "Point Towards Zone"
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 4.1,
@@ -42,7 +53,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 41.496468355215534
+    "rotation": 36.02737338510365
   },
   "reversed": false,
   "folder": "DerechaPaths",

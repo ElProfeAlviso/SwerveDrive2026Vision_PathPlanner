@@ -35,8 +35,8 @@ public class AutoShooterStartCmd extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooter.setShooterFeederSpeed(-0.4);
-    shooter.setShooterIndexerSpeed(-0.82);
+    shooter.setShooterFeederSpeed(-0.8);
+    shooter.setShooterIndexerSpeed(-0.8);
   }
 
   // Called once the command ends or is interrupted.
